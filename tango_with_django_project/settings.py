@@ -15,12 +15,21 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Built path to templates
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+
+# Built path to static
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+
+# Built path to media
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 't#4e@@!%1(8hz$$bs(qed929_4!p3r*l+!f@5q-b#ge+wkgx^i'
+SECRET_KEY = 'v#)r=ko+2ch0h%jn9ixl(jo5#2$b8tv1z9n+!b#p^f=cz5%arq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rango',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +64,7 @@ ROOT_URLCONF = 'tango_with_django_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR, ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -62,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media'
             ],
         },
     },
@@ -117,4 +128,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+STATICFILES_DIRS = [STATIC_DIR, ]
+
 STATIC_URL = '/static/'
+
+
+# Media files
+
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/media/'
+
+
